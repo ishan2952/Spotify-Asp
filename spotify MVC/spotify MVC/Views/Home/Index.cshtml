@@ -1,8 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    SpotifyAPI.Web.FeaturedPlaylistsResponse tr = ViewBag.track;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">@tr.Message</h1>
+
+    @foreach (var item in tr.Playlists.Items)
+    {
+        <h2>@item.Name</h2>
+        <h2>@item.Description</h2>
+        <img src="@item.Images.First().Url">
+
+    }
 </div>
